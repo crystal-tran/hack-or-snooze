@@ -60,6 +60,7 @@ class StoryList {
     const storiesData = await response.json();
 
     // turn plain old story objects from API into instances of Story class
+    //stories is an array of story instances
     const stories = storiesData.stories.map(story => new Story(story));
 
     // build an instance of our own class using the new array of stories
@@ -73,8 +74,31 @@ class StoryList {
    * Returns the new Story instance
    */
 
-  async addStory( /* user, newStory */) {
-    // UNIMPLEMENTED: complete this function!
+  async addStory(user, newStory) {
+    //get the newStory data (object), get the user data (token)
+    console.log("user is", user, "newStory is", newStory);
+    const userToken = user.loginToken; //retrieve user token
+    console.log("userToken is:", userToken);
+    const {title, author, url} = newStory;
+    console.log("title is", title, "author is", author, "url is", url);
+
+    const bodyString = JSON.stringify({ token: userToken, story: {title, author, url}})
+    //console.log("bodyString is", bodyString);
+
+
+    const response = await fetch(`${BASE_URL}/stories`,
+    {
+      method: "POST",
+      body: bodyString,
+      headers: {
+        "content-type" : "application/json"
+      }
+    });
+
+    const storyData = await response.json();
+    console.log("response is:", response, "story Data is", storyData);
+    return new Story(storyData);
+
   }
 }
 
@@ -116,6 +140,7 @@ class User {
    * - name: the user's full name
    */
 
+  //in order to use signup method, attach it on the User class
   static async signup(username, password, name) {
     const response = await fetch(`${BASE_URL}/signup`, {
       method: "POST",
