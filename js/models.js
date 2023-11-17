@@ -97,13 +97,13 @@ class StoryList {
       }
     });
 
-    const storyData = await response.json();
+    const storyDataFromAPI = await response.json();
 
-    // console.log("response is:", response, "story Data is", storyData);
+    console.log("response is:", response, "story Data is", storyDataFromAPI);
 
     StoryList.getStories();
 
-    FIXME: /*
+    /* FIXME:
     received an error in the console "Uncaught (in promise)
     TypeError: Cannot destructure property 'storyId' of 'undefined' as it is undefined.
     at new Story (models.js:15:17)
@@ -112,12 +112,20 @@ class StoryList {
     // const aNewStory = new Story(storyData.story);
     // console.log("aNewStory is", aNewStory);
     // aNewStory instanceof Story ? console.log(true) : console.log(false)
-    FIXME: /*set new Story(storyData.story to a variable and console log it) */
-    return new Story(storyData.story);
+    //FIXME: set new Story(storyData.story to a variable and console log it) */
+    console.log("storyData.story =", storyDataFromAPI.story);
+    const storyInfo = await storyDataFromAPI.story;
+
+    console.log(storyInfo);
+
+    return new Story(storyInfo);
+
 
   }
 }
 
+// storyInfo.storyId,storyInfo.title,storyInfo.author,storyInfo.url,
+//       storyInfo.username, storyInfo.createdAt
 
 /**
  * User: a user in the system (only used to represent the current user)
