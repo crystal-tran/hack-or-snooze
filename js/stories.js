@@ -66,5 +66,5 @@ async function getFormDataAndDisplayNewStory(evt){
 
   await storyList.addStory(currentUser, newStory);
   // const story = new Story(newStory);
-
+ //kateFavoriteStories.addStory
 }

@@ -25,7 +25,9 @@ class Story {
 
   getHostName() {
     // FIXME: complete this function!
-    return "hostname.com";
+    const urlLink = new URL(this.url).hostname;
+    return urlLink;
+    //return new URL(this.url).host
   }
 }
 
@@ -99,9 +101,9 @@ class StoryList {
 
     const storyDataFromAPI = await response.json();
 
-    console.log("response is:", response, "story Data is", storyDataFromAPI);
+    //console.log("response is:", response, "story Data is", storyDataFromAPI);
 
-    StoryList.getStories();
+    // StoryList.getStories();
 
     /* FIXME:
     received an error in the console "Uncaught (in promise)
@@ -113,12 +115,16 @@ class StoryList {
     // console.log("aNewStory is", aNewStory);
     // aNewStory instanceof Story ? console.log(true) : console.log(false)
     //FIXME: set new Story(storyData.story to a variable and console log it) */
-    console.log("storyData.story =", storyDataFromAPI.story);
-    const storyInfo = await storyDataFromAPI.story;
+    //console.log("storyData.story =", storyDataFromAPI.story);
+    const storyInfo = storyDataFromAPI.story;
+    const story = new Story(storyInfo);
+
+    this.stories.unshift(story);
 
     console.log(storyInfo);
+    console.log(this.stories);
 
-    return new Story(storyInfo);
+    return story;
 
 
   }
