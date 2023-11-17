@@ -50,3 +50,17 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+$("submit-form").on("click", $("#submit-btn"), getFormDataAndDisplayNewStory);
+
+function getFormDataAndDisplayNewStory(evt){
+  $authorInputValue = $("#author-name").val();
+  $titleInputValue = $("#title").val();
+  $urlInputValue = $("#url").val();
+  console.log("author, title, url:", {$authorInputValue, $titleInputValue, $urlInputValue});
+  const newStory = {$authorInputValue, $titleInputValue, $urlInputValue};
+
+
+  // const story = new Story(newStory);
+
+}
