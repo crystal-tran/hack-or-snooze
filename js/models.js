@@ -76,15 +76,17 @@ class StoryList {
 
   async addStory(user, newStory) {
     //get the newStory data (object), get the user data (token)
-    console.log("user is", user, "newStory is", newStory);
+    //console.logs commented out for debugging
+    // console.log("user is", user, "newStory is", newStory);
     const userToken = user.loginToken; //retrieve user token
-    console.log("userToken is:", userToken);
+    // console.log("userToken is:", userToken);
     const {title, author, url} = newStory;
-    console.log("title is", title, "author is", author, "url is", url);
+    // console.log("title is", title, "author is", author, "url is", url);
 
-    const bodyString = JSON.stringify({ token: userToken, story: {title, author, url}})
+    const bodyString = JSON.stringify({
+       token: userToken, story: {title, author, url}
+      });
     //console.log("bodyString is", bodyString);
-
 
     const response = await fetch(`${BASE_URL}/stories`,
     {
@@ -96,8 +98,15 @@ class StoryList {
     });
 
     const storyData = await response.json();
-    console.log("response is:", response, "story Data is", storyData);
-    return new Story(storyData);
+
+    // console.log("response is:", response, "story Data is", storyData);
+
+    StoryList.getStories();
+
+    // const aNewStory = new Story(storyData.story);
+    // console.log("aNewStory is", aNewStory);
+    // aNewStory instanceof Story ? console.log(true) : console.log(false)
+    return new Story(storyData.story);
 
   }
 }
