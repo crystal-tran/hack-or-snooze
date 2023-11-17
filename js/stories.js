@@ -64,9 +64,17 @@ async function getFormDataAndDisplayNewStory(evt){
   console.log("author, title, url:", {author, title, url});
   const newStory = {title, author, url};
 
-  //console.log(await storyList.addStory(currentUser.username, newStory));
+  console.log(
+    "newStory is ", newStory, "currentUser is ->",currentUser,
+  )
 
-  await storyList.addStory(currentUser.username, newStory);
+
+  const storyInstance = await storyList.addStory(currentUser, newStory);
+  const newStoryMarkup = generateStoryMarkup(storyInstance);
+  $allStoriesList.prepend(newStoryMarkup);
+
+
+  console.log(storyInstance);
   // const story = new Story(newStory);
  //kateFavoriteStories.addStory
 }

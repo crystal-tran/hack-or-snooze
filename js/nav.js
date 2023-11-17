@@ -38,9 +38,11 @@ function updateNavOnLogin() {
 }
 
 /**Show submit form on click on "submit" in nav */
-function navSubmitClick(evt){
+
+function navSubmitClick(evt) {
+
   console.debug("navSubmitClick");
   $(".submit-form").show();
 }
 
-$("nav").on("click", $("#submit"), navSubmitClick)
+$("nav").on("click", $("#submit"), navSubmitClick);
