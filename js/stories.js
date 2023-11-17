@@ -53,7 +53,9 @@ function putStoriesOnPage() {
 
 $(".submit-form").on("submit", $("#submit-btn"), getFormDataAndDisplayNewStory);
 
-/**On submit, retrieve submit form data, and add to list of stories*/
+/**On submit, retrieve submit form data, and add story and update storyList,
+ * and update UI
+*/
 async function getFormDataAndDisplayNewStory(evt){
   evt.preventDefault();
   const author = $("#author-name").val();
@@ -62,9 +64,9 @@ async function getFormDataAndDisplayNewStory(evt){
   console.log("author, title, url:", {author, title, url});
   const newStory = {title, author, url};
 
-  console.log(await storyList.addStory(currentUser.username, newStory));
+  //console.log(await storyList.addStory(currentUser.username, newStory));
 
-  await storyList.addStory(currentUser, newStory);
+  await storyList.addStory(currentUser.username, newStory);
   // const story = new Story(newStory);
  //kateFavoriteStories.addStory
 }
