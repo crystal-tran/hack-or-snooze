@@ -51,16 +51,18 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
-$("submit-form").on("click", $("#submit-btn"), getFormDataAndDisplayNewStory);
+$(".submit-form").on("submit", $("#submit-btn"), getFormDataAndDisplayNewStory);
 
+/**On submit, retrieve submit form data, and add to list of stories*/
 function getFormDataAndDisplayNewStory(evt){
-  $authorInputValue = $("#author-name").val();
-  $titleInputValue = $("#title").val();
-  $urlInputValue = $("#url").val();
-  console.log("author, title, url:", {$authorInputValue, $titleInputValue, $urlInputValue});
-  const newStory = {$authorInputValue, $titleInputValue, $urlInputValue};
+  evt.preventDefault();
+  const author = $("#author-name").val();
+  const title = $("#title").val();
+  const url = $("#url").val();
+  console.log("author, title, url:", {author, title, url});
+  const newStory = {title, author, url};
 
-
+  storyList.addStory(currentUser, newStory);
   // const story = new Story(newStory);
 
 }

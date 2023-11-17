@@ -103,9 +103,16 @@ class StoryList {
 
     StoryList.getStories();
 
+    FIXME: /*
+    received an error in the console "Uncaught (in promise)
+    TypeError: Cannot destructure property 'storyId' of 'undefined' as it is undefined.
+    at new Story (models.js:15:17)
+    at StoryList.addStory (models.js:109:12)"*/
+
     // const aNewStory = new Story(storyData.story);
     // console.log("aNewStory is", aNewStory);
     // aNewStory instanceof Story ? console.log(true) : console.log(false)
+    FIXME: /*set new Story(storyData.story to a variable and console log it) */
     return new Story(storyData.story);
 
   }
