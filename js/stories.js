@@ -53,8 +53,8 @@ function putStoriesOnPage() {
 
 $submitForm.on("submit", getFormDataAndDisplayNewStory);
 
-/**On submit, retrieve submit form data, and add story and update storyList,
- * and update UI
+/**On submit, retrieve submit form data, and add story to API and update
+ * storyList, and update UI
 */
 async function getFormDataAndDisplayNewStory(evt){
   evt.preventDefault();
@@ -69,12 +69,13 @@ async function getFormDataAndDisplayNewStory(evt){
   )
 
 
-  const storyInstance = await storyList.addStory(currentUser, newStory);
-  const newStoryMarkup = generateStoryMarkup(storyInstance);
+  const story = await storyList.addStory(currentUser, newStory);
+  const newStoryMarkup = generateStoryMarkup(story);
   $allStoriesList.prepend(newStoryMarkup);
 
 
-  console.log(storyInstance);
+  console.log(story);
+  $submitForm.hide();
   // const story = new Story(newStory);
  //kateFavoriteStories.addStory
 }
