@@ -25,6 +25,7 @@ class Story {
 
   getHostName() {
     // FIXME: complete this function!
+    //change variable name to hostname or return
     const urlLink = new URL(this.url).hostname;
     return urlLink;
     //return new URL(this.url).host
@@ -86,7 +87,8 @@ class StoryList {
     // console.log("title is", title, "author is", author, "url is", url);
 
     const bodyString = JSON.stringify({
-       token: userToken, story: {title, author, url}
+       token: userToken,
+       story: {title, author, url}
       });
     //console.log("bodyString is", bodyString);
 

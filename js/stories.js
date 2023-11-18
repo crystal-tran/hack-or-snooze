@@ -51,7 +51,7 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
-$(".submit-form").on("submit", $("#submit-btn"), getFormDataAndDisplayNewStory);
+$submitForm.on("submit", getFormDataAndDisplayNewStory);
 
 /**On submit, retrieve submit form data, and add story and update storyList,
  * and update UI
